@@ -19,7 +19,7 @@ def sendNotification():
 
 if __name__ == '__main__':
     sec = 10
-    lastResult = main() 
+    lastResult = "test" 
     while(True):
          time.sleep(sec)
          result = main()
