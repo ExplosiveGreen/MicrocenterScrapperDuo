@@ -5,7 +5,6 @@ import time
 from discordwebhook import Discord
 
 discord = Discord(url="https://discord.com/api/webhooks/1222898078777086035/pUnL-HRl_JTCbX1Ml0vj4Boff6hXGXn_QU0WrLDunOudKdKXOzA6O_zxlGouKsKYpUfA")
-lastResult = main()
 
 def main():
    print("check webpage")
@@ -20,9 +19,10 @@ def sendNotification():
 
 if __name__ == '__main__':
     sec = 10
+    lastResult = main() 
     while(True):
          time.sleep(sec)
-         result = main();
+         result = main()
          if(result != lastResult):
                sendNotification()
          lastResult = result
