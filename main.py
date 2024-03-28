@@ -7,19 +7,19 @@ from discordwebhook import Discord
 discord = Discord(url="https://discord.com/api/webhooks/1222898078777086035/pUnL-HRl_JTCbX1Ml0vj4Boff6hXGXn_QU0WrLDunOudKdKXOzA6O_zxlGouKsKYpUfA")
 
 def main():
-   print("check webpage")
+   discord.post(content="check webpage")
    html = requests.get("https://www.microcenter.com/product/677543/asus-zenbook-duo-ux8406ma-ps99t-14-laptop-computer---inkwell-gray_Hatchfeed?utm_campaign=Asus&storeID=121")
    soup = BeautifulSoup(html.text,"html.parser")
    result = soup.find("div",{"class":"inventory"}).find("span").text
-   print(result)
+   discord.post(content=result)
    return result
 
 def sendNotification():
     discord.post(content="@everyone web page have changed go to link https://www.microcenter.com/product/677543/asus-zenbook-duo-ux8406ma-ps99t-14-laptop-computer---inkwell-gray_Hatchfeed?utm_campaign=Asus&storeID=121")
 
 if __name__ == '__main__':
-    sec = 10
-    lastResult = "test" 
+    sec = 60*60
+    lastResult = main()
     while(True):
          time.sleep(sec)
          result = main()
